@@ -1,6 +1,25 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:instagram_clone/responsive/responsive_layout_screen.dart';
+import 'package:instagram_clone/responsive/web_screen_layout.dart';
+import 'package:instagram_clone/screens/spash_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  /*if(kIsWeb){
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+            apiKey: "AIzaSyCmt70lEHtPCAJXUpIfHGr90JeE3wRDKMY",
+            appId: "1:116934423349:web:40ec19869e8909eca0d27c",
+            messagingSenderId: "116934423349",
+            projectId: "instgramui"
+        )
+    );
+  }*/
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -10,60 +29,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Instagram Clone',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: ResponsiveLayout(webScreenLayout: WebScreenLayout(),mobileScreenLayout: SplashScreen(),),
     );
   }
 }
+// hello world
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Instagram',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Enter email',
-                enabledBorder: OutlineInputBorder(),
-                border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.only(left: 10),
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Enter password',
-                enabledBorder: OutlineInputBorder(),
-                border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.only(left: 10),
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Sign In'),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
