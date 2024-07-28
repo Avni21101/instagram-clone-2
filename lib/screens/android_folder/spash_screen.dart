@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/responsive/mobile_screen_logi-in-page.dart';
+import 'package:instagram_clone/screens/android_folder/login/android_login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Container(
-          child: Image.asset('assets/instalogo.jpg'),
+          child: Image.asset('assets/instalogo.jpg',height: 120,width: 120,),
         ),
       ),
     );

@@ -15,13 +15,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  List<Widget> widgetlist = [HomeScreen(),SearchScreen(),NewPostScreen(),ReelsScreen(),ProfileScreen()];
+  List<Widget> widgetList = [const HomeScreen(),const SearchScreen(),const NewPostScreen(),const ReelsScreen(),const ProfileScreen()];
   int myIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widgetlist[myIndex],
+      body: widgetList[myIndex],
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.black,
@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
         },
         type: BottomNavigationBarType.fixed,
         currentIndex: myIndex,
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: '',
